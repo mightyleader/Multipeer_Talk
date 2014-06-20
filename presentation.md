@@ -38,9 +38,103 @@ Session
 Advertiser
 Browser
 
+---
+#[fit]Multipeer networking... 
+
+allows you to send data *from one device directly to another*
+
 
 ---
-Wireless
+#[fit]Multipeer networking... 
+
+allows you to send data *from one device directly to another*
+
+requires *no server infrastructure*
+
+
+---
+#[fit]Multipeer networking... 
+
+allows you to send data *from one device directly to another*
+
+requires *no server infrastructure*
+
+Data can be transmitted over *Bluetooth LE*, *Ad-Hoc* WiFi or *Infrastructure* WiFi
+
+---
+#[fit]Multipeer networking... 
+
+allows you to send data *from one device directly to another*
+
+requires *no server infrastructure*
+
+can be transmitted over *Bluetooth LE*, *Ad-Hoc* WiFi or *Infrastructure* WiFi
+
+*bridges across interfaces*
+
+---
+#[fit]Consider 3 iOS devices...
+ 
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
+
+---
+#[fit]Consider 3 iOS devices...
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
+
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
+
+
+---
+#[fit]Consider 3 iOS devices...
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
+
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
+
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/bluetooth.png)
+
+1 connects to 2 via Bluetooth
+
+3 connects to 2 via WiFi
+
+1, 2 and 3 can all see each other
+
+no direct connection between 1 & 3 required
+
+---
+#[fit]Session, Browser and Advertiser
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+
+---
+#[fit]Session, Browser and Advertiser
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/sender.png)
+![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/recieve.png)
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+
+---
+#[fit]Session, Browser and Advertiser
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/sender.png)
+![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/send.png)
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/receiver.png)
+
+---
+#[fit]Session, Browser and Advertiser
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/bidirectional.png)
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+
+---
+#[fit]Code
+![fit, 100%, filtered](http://images4.alphacoders.com/270/27094.jpg)
 
 ---
 Session
@@ -66,11 +160,7 @@ How it works
 ---
 #[fit]2 levels of API
 #Standard
-
----
-#[fit]2 levels of API
-#Standard
-###```MCBrowserViewController``` - based on ```UITableView```
+###```MCBrowserViewController``` based on ```UITableView```
 
 ---
 #[fit]2 levels of API
@@ -87,14 +177,6 @@ How it works
 #Custom
 
 ---
-#[fit]2 levels of API
-#Custom
-
----
-#[fit]Code
-![fit, 100%, filtered](http://images4.alphacoders.com/270/27094.jpg)
-
----
 #[fit]Pitfalls
 ![fit, 150% filtered](http://i.stack.imgur.com/nI9zx.jpg)
 
@@ -104,13 +186,13 @@ How it works
 
 ---
 #Duplicates in the browser
-###Issue: MCPeerID created each time MCSession is instantiated
+###Issue: ```MCPeerID``` created each time ```MCSession``` is instantiated
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6028.PNG)
 
 ---
 #Duplicates in the browser
-###Issue: MCPeerID created each time MCSession is instantiated
-###Solution: Each peer should serialize its own MCPeerID with NSKeyedArchiver, save it to disk and reuse for each new session.
+###Issue: ```MCPeerID``` created each time ```MCSession``` is instantiated
+###Solution: Each peer should serialize its own ```MCPeerID``` with ```NSKeyedArchiver```, save it to disk and reuse for each new session.
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6028.PNG)
 
 ---
@@ -125,7 +207,7 @@ How it works
 ---
 #Invitation response times
 ###Issue: Once an invitation is accepted there's a delay before connecting
-###Solution: Encryption is on by default which adds overhead to initial connections. Consider using MCEncryptionNone
+###Solution: Encryption is on by default which adds overhead to initial connections. Consider using ```MCEncryptionNone```
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6029.PNG)
 
 ---
@@ -149,6 +231,8 @@ How it works
 
 ---
 #[fit]End
-### created with Deckset for OS X
-### http://www.decksetapp.com
+### created with Deckset
+#### http://www.decksetapp.com
+### icons made with Sketch
+#### http://bohemiancoding.com/sketch/
 
