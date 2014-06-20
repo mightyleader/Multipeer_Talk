@@ -31,6 +31,7 @@ For those who haven't, you never experienced... the Chooser!
 
 ---
 #[fit]Overview
+![fit, 175%, filtered](http://www.overviewthemovie.com/wp-content/uploads/2012/12/MegaEarth01.jpg)
 
 ^Wireless
 Session
@@ -60,23 +61,34 @@ How it works
 
 ---
 #[fit]2 levels of API
+#Standard & Custom
+
+---
+#[fit]2 levels of API
 #Standard
+
+---
+#[fit]2 levels of API
+#Standard
+###```MCBrowserViewController``` - based on ```UITableView```
+
+---
+#[fit]2 levels of API
+#Standard
+###```MCBrowserViewController``` based on ```UITableView```
+###```MCAdvertiserAssistant``` based on ```UIAlertView```
+
+---
+#[fit]2 levels of API
 #Custom
 
 ---
 #[fit]2 levels of API
-#Standard
+#Custom
 
 ---
 #[fit]2 levels of API
-#Standard
-###MCBrowserViewController - based on UITableView
-
----
-#[fit]2 levels of API
-#Standard
-###MCBrowserViewController - based on UITableView
-###MCAdvertiserAssistant - based on UIAlertView
+#Custom
 
 ---
 #[fit]Code
@@ -117,6 +129,10 @@ How it works
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6029.PNG)
 
 ---
+#[fit]Future
+![fit, 150%, filtered](http://thumbs.dreamstime.com/z/tunnel-futuristic-18180424.jpg)
+
+---
 #[fit]LocalTalk
 ###on the app store
 ###v0.8
@@ -129,4 +145,10 @@ How it works
 #[fit] Rob Stearn
 #[fit] @cocoadelica
 #[fit] www.cocoadelica.co.uk
+#[fit] robstearn@me.com
+
+---
+#[fit]End
+### created with Deckset for OS X
+### http://www.decksetapp.com
 
