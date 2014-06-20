@@ -9,7 +9,7 @@
 ##[fit]Overview
 ##[fit]User Interface
 ##[fit]Code
-##[fit]Pitfalls
+##[fit]!
 ##[fit]Future
 
 ---
@@ -24,12 +24,6 @@ For those who haven't, you never experienced... the Chooser!
 ![fit](http://computers.mcbx.netne.net/apple/general/chooser.jpg)
 
 ---
-![fit, 230%, filtered](http://4.bp.blogspot.com/-nVc-nbWq7_s/To2LKMf1TiI/AAAAAAAAI7Y/hSrKS6BeWeI/s640/Matrix_024Pyxurz.jpg)
-#[fit]RumorMonger
-
-###http://c2.com/cgi/wiki?RumorMonger
-
----
 #[fit]Overview
 ![fit, 175%, filtered](http://www.overviewthemovie.com/wp-content/uploads/2012/12/MegaEarth01.jpg)
 
@@ -41,36 +35,62 @@ Browser
 ---
 #[fit]Multipeer networking... 
 
-allows you to send data *from one device directly to another*
-
-
----
-#[fit]Multipeer networking... 
-
-allows you to send data *from one device directly to another*
-
-requires *no server infrastructure*
-
+sends data *from one device to another*
 
 ---
 #[fit]Multipeer networking... 
 
-allows you to send data *from one device directly to another*
+sends data *from one device to another*
 
 requires *no server infrastructure*
-
-Data can be transmitted over *Bluetooth LE*, *Ad-Hoc* WiFi or *Infrastructure* WiFi
 
 ---
 #[fit]Multipeer networking... 
 
-allows you to send data *from one device directly to another*
+sends data *from one device to another*
 
 requires *no server infrastructure*
 
-can be transmitted over *Bluetooth LE*, *Ad-Hoc* WiFi or *Infrastructure* WiFi
+sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+
+---
+#[fit]Multipeer networking... 
+
+sends data *from one device to another*
+
+requires *no server infrastructure*
+
+sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 *bridges across interfaces*
+
+---
+#[fit]Multipeer networking... 
+
+sends data *from one device to another*
+
+requires *no server infrastructure*
+
+sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+
+*bridges across interfaces*
+
+can send data as *blob, URL or stream*
+
+---
+#[fit]Multipeer networking... 
+
+sends data *from one device to another*
+
+requires *no server infrastructure*
+
+sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+
+*bridges across interfaces*
+
+can send data as *blob, URL or stream*
+
+can ensure *order and delivery of data*
 
 ---
 #[fit]Consider 3 iOS devices...
@@ -85,6 +105,17 @@ can be transmitted over *Bluetooth LE*, *Ad-Hoc* WiFi or *Infrastructure* WiFi
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
 
+
+---
+#[fit]Consider 3 iOS devices...
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
+
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
+
+
+![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/bluetooth.png)
 
 ---
 #[fit]Consider 3 iOS devices...
@@ -160,6 +191,10 @@ How it works
 ---
 #[fit]2 levels of API
 #Standard
+
+---
+#[fit]2 levels of API
+#Standard
 ###```MCBrowserViewController``` based on ```UITableView```
 
 ---
@@ -170,14 +205,21 @@ How it works
 
 ---
 #[fit]2 levels of API
-#Custom
+##Custom
 
 ---
 #[fit]2 levels of API
-#Custom
+##Custom
+###```MCNearbyServiceBrowser``` handles finding nearby users and sends callbacks to ```MCNearbyServiceBrowserDelegate```
 
 ---
-#[fit]Pitfalls
+#2 levels of API
+##Custom
+###```MCNearbyServiceBrowser``` finds nearby users and sends callbacks to ```MCNearbyServiceBrowserDelegate```
+###```MCNearbyServiceAdvertiser``` advertises your service and handles invitations by callbacks to ```MCNearbyServiceAdvertiserDelegate``` 
+
+---
+#[fit]!
 ![fit, 150% filtered](http://i.stack.imgur.com/nI9zx.jpg)
 
 ---
