@@ -2,13 +2,13 @@
 
 ##Multipeer Networking Presentation
 
-1. open using [Deckset app for OS X*](http://decksetapp.com)
+Open using [Deckset app for OS X*](http://decksetapp.com)
 
-2. select this theme...
+Select this theme...
 
 ![](https://dl.dropboxusercontent.com/u/5034400/README/templatedetails.png)
 
-3. select this aspect ratio...
+Select this aspect ratio...
 
 ![](https://dl.dropboxusercontent.com/u/5034400/README/aspectratio.png)
 
