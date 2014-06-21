@@ -5,10 +5,10 @@
 1. open using [Deckset app for OS X*](http://decksetapp.com)
 
 2. select this theme...
-![](https://bitbucket.org/cocoadelica/multipeerpresentation/src/09749b0de4d9381d658a2ccc555d5fb2321dd497/templatedetails.png)
+![](https://dl.dropboxusercontent.com/u/5034400/README/templatedetails.png)
 
 3. select this aspect ratio...
-![](https://bitbucket.org/cocoadelica/multipeerpresentation/src/09749b0de4d9381d658a2ccc555d5fb2321dd497/aspectratio.png)
+![](https://dl.dropboxusercontent.com/u/5034400/README/aspectratio.png)
 
 
 ###*requires a Macintosh computer available [here](http://www.apple.com/store)
