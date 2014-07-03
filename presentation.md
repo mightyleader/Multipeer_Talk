@@ -7,10 +7,11 @@
 ![fit, 270% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
 ##[fit]History
 ##[fit]Overview
-##[fit]User Interface
 ##[fit]Code
 ##[fit]!
 ##[fit]Future
+
+^ so we're going to go through a little history, then run through an overview of the technology, get into some code and explore the different levels of API you can use. I'll outline a couple of gotchas and we'll finish with a quick look ahead.
 
 ---
 #[fit]History
@@ -168,16 +169,86 @@ no direct connection between 1 & 3 required
 ![fit, 100%, filtered](http://images4.alphacoders.com/270/27094.jpg)
 
 ---
-Session
+#[fit]Session
+#[fit]Browser
+#[fit]Advertiser
+#[fit]Transmission types
+#[fit]Transmission modes
+
+---
+#Session / MCPeerID
+## ```MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:@"cocoadelica"];```
+
+---
+#Session / MCPeerID
+## ```MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:@"cocoadelica"];```
+
+## The Peer ID represents the user 
+
+---
+#Session / Initialize
+### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
+
+---
+#Session / Initialize
+### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
+
+####* optional Array with ```SecIdentityRef``` and ```SecCertificateRef``` items 
+
+---
+#Session / Initialize
+### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
+
+####* optional Array with ```SecIdentityRef``` and ```SecCertificateRef``` items 
+####** choose from ```MCEncryptionRequired```, ```MCEncryptionOptional``` or ```MCEncryptionNone```
+
+---
+#Session / Delegate
+### ```self.session.delegate = self;```
+
+## Delegate callbacks for the session let you handle data transmission events.
+
+^more on the these callbacks soon...
+
+---
+#Session / Details
+##Foreground operation only 
+
+
+---
+#Session / Details
+##Foreground operation only 
+##Disconnects on breakpoints
+
+
+---
+#Session / Details
+##Foreground operation only 
+##Disconnects on breakpoints
+##Good candidate for a Singleton*
+
+---
+#Browser
+```
+---
+#[fit]Browser
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+#[fit]Easy mode
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
 
 ---
 Advertiser
 
 ---
-Browser
+Sending data
+Types of data
 
 ---
-How it works
+Sending data
+Transmission modes
 
 ---
 #[fit]User 
@@ -273,6 +344,7 @@ How it works
 
 ---
 #[fit]End
+![fit, 60%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/cocoa.png)
 ### created with Deckset
 #### http://www.decksetapp.com
 ### icons made with Sketch
