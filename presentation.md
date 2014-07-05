@@ -102,8 +102,6 @@ can ensure *order and delivery of data*
 #[fit]Consider 3 iOS devices...
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
-
-
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
 
 
@@ -111,22 +109,14 @@ can ensure *order and delivery of data*
 #[fit]Consider 3 iOS devices...
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
-
-
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
-
-
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/bluetooth.png)
 
 ---
 #[fit]Consider 3 iOS devices...
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
-
-
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
-
-
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/bluetooth.png)
 
 1 connects to 2 via Bluetooth
@@ -228,16 +218,71 @@ no direct connection between 1 & 3 required
 ##Good candidate for a Singleton*
 
 ---
-#Browser
-```
+#[fit]Browser
+###```MCBrowserViewController *bvc = [[MCBrowserViewController alloc] initWithServiceType:(NSString *)serviceType session:(MCSession *)session];```
+
 ---
 #[fit]Browser
+###```MCBrowserViewController *bvc = [[MCBrowserViewController alloc] initWithServiceType:(NSString *)serviceType session:(MCSession *)session];```
+###[fit]use a reverse DNS notation for service type
+
+---
+#[fit]Browser
+#[fit]"Easy mode"
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
 
 ---
 #[fit]Browser
-#[fit]Easy mode
+#[fit]"Easy mode"
+##[fit]handles invites
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+#[fit]"Easy mode"
+##[fit]handles invites
+##[fit]boxed solution
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+#[fit]"Easy mode"
+##[fit]handles invites
+##[fit]boxed solution
+##[fit]minimal styling
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+#[fit]"Easy mode"
+##[fit]handles invites
+##[fit]boxed solution
+##[fit]minimal styling
+##[fit]awesome!
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+#[fit]"Easy mode"
+##[fit]handles invites
+##[fit]boxed solution
+##[fit]minimal styling
+##[fit]awesome!
+##[fit]a bit dull
+![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+---
+#[fit]Browser
+###```MCBrowserViewControllerDelegate```
+###browserViewController:shouldPresentNearbyPeer:withDiscoveryInfo:
+###browserViewControllerDidFinish:
+###browserViewControllerWasCancelled:
+
+---
+#[fit]Browser
+##"Hard Mode"
+###Build a custom UI
+###Use ```MCNearbyServiceBrowser``` for data and callbacks
 
 ---
 Advertiser
