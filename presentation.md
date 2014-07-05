@@ -285,6 +285,12 @@ no direct connection between 1 & 3 required
 ###Use ```MCNearbyServiceBrowser``` for data and callbacks
 
 ---
+#[fit]Browser
+##"Expert Mode"
+###Build a custom UI
+###*Subclass* ```MCNearbyServiceBrowser``` for data and callbacks
+
+---
 Advertiser
 
 ---
