@@ -11,7 +11,7 @@
 ##[fit]!
 ##[fit]Future
 
-^ so we're going to go through a little history, then run through an overview of the technology, get into some code and explore the different levels of API you can use. I'll outline a couple of gotchas and we'll finish with a quick look ahead.
+^ so we're going to go through a little history, then run through an overview of the technology, get into some code and explore the different levels of API you can use. I'll outline a couple of gotchas and we'll finish with a look ahead.
 
 ---
 #[fit]History
@@ -23,6 +23,8 @@ For those who haven't, you never experienced... the Chooser!
 
 ---
 ![fit](http://computers.mcbx.netne.net/apple/general/chooser.jpg)
+
+^ click an item, see the local resources, pick a server or printer 
 
 ---
 #[fit]Overview
@@ -38,12 +40,16 @@ Browser
 
 sends data *from one device to another*
 
+^sends data *from one device to another*
+
 ---
 #[fit]Multipeer networking... 
 
 sends data *from one device to another*
 
 requires *no server infrastructure*
+
+^ requires *no server infrastructure*
 
 ---
 #[fit]Multipeer networking... 
@@ -54,16 +60,7 @@ requires *no server infrastructure*
 
 sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
----
-#[fit]Multipeer networking... 
-
-sends data *from one device to another*
-
-requires *no server infrastructure*
-
-sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
-
-*bridges across interfaces*
+^ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 ---
 #[fit]Multipeer networking... 
@@ -76,7 +73,22 @@ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 *bridges across interfaces*
 
-can send data as *blob, URL or stream*
+^ *bridges across interfaces*
+
+---
+#[fit]Multipeer networking... 
+
+sends data *from one device to another*
+
+requires *no server infrastructure*
+
+sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+
+*bridges across interfaces*
+
+can send data as *blob, resource or stream*
+
+^ can send data as *blob, resource or stream* which we'll look at in the Code section
 
 ---
 #[fit]Multipeer networking... 
@@ -93,16 +105,22 @@ can send data as *blob, URL or stream*
 
 can ensure *order and delivery of data*
 
+^ can ensure *order and delivery of data* more on that later
+
 ---
 #[fit]Consider 3 iOS devices...
  
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
+
+^ here a device with wifi turned on, though not connected to a specific network
 
 ---
 #[fit]Consider 3 iOS devices...
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
+
+^ here's a second one that has wifi on, also not on a network, and also bluetooth active
 
 
 ---
@@ -111,6 +129,8 @@ can ensure *order and delivery of data*
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/wifi.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/both.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/bluetooth.png)
+
+^ and here's a third that just got bluetooth on. Not active just around.
 
 ---
 #[fit]Consider 3 iOS devices...
@@ -127,11 +147,16 @@ can ensure *order and delivery of data*
 
 no direct connection between 1 & 3 required
 
+^ all the devices connect to each other in a mesh
+
 ---
 #[fit]Session, Browser and Advertiser
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
+
+^ the multipeer API uses 3 objects, in most cases each device will run all three.
+Firstly both devices will instantiate a session object that stays in memory for the life of the communication.
 
 ---
 #[fit]Session, Browser and Advertiser
@@ -140,12 +165,17 @@ no direct connection between 1 & 3 required
 ![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/recieve.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
 
+One device will then create an Advertiser, to broadcast it's service.
+
 ---
 #[fit]Session, Browser and Advertiser
 
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/sender.png)
 ![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/send.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/receiver.png)
+
+This is picked by a Browser object on the other device and displayed as an available peer.
+Tapping on the displayed name sends an invite back to the Advertiser to join Sessions.
 
 ---
 #[fit]Session, Browser and Advertiser
@@ -154,9 +184,14 @@ no direct connection between 1 & 3 required
 ![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/bidirectional.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/plain.png)
 
+^ When the invitation request is accepted a bi-directional communication session is open to send data.
+
 ---
 #[fit]Code
 ![fit, 100%, filtered](http://images4.alphacoders.com/270/27094.jpg)
+
+^ so thats the theory, how does this work in practice?
+Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 
 ---
 #[fit]Session
