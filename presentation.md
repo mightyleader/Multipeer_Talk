@@ -204,21 +204,24 @@ Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 #Session / MCPeerID
 ## ```MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:@"cocoadelica"];```
 
----
-#Session / MCPeerID
-## ```MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:@"cocoadelica"];```
-
-## The Peer ID represents the user 
+^ You start of creating the Session by making an MCPeerID to represent the local user.
+You give pass it a string for the name to display in Browsers.
 
 ---
 #Session / Initialize
 ### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
+
+^ now we can create the session itself, an instance of MCSession
 
 ---
 #Session / Initialize
 ### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
 
 ####* optional Array with ```SecIdentityRef``` and ```SecCertificateRef``` items 
+
+^ couple of things to point out, the security identity is an optional NSArray.
+It would contain a SecIdentityRef struct which contains a certificate/key pair which idents the local user.
+
 
 ---
 #Session / Initialize
@@ -227,24 +230,31 @@ Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 ####* optional Array with ```SecIdentityRef``` and ```SecCertificateRef``` items 
 ####** choose from ```MCEncryptionRequired```, ```MCEncryptionOptional``` or ```MCEncryptionNone```
 
+^ the third parameter specifies Encryption type. We'll go into why this can be important in the Gotcha's
+but in short it decides when and how to allow connection depending on the receivers encryption choice.
+
 ---
 #Session / Delegate
 ### ```self.session.delegate = self;```
 
 ## Delegate callbacks for the session let you handle data transmission events.
 
-^more on the these callbacks soon...
+^The delegate gets callbacks about session status, data transfer and connection events. 
+I won't go into this now, the interesting ones I'll cover later with more context.
 
 ---
 #Session / Details
 ##Foreground operation only 
 
+^So some things to note about MCSession.
+Foreground only, at least on iOS
 
 ---
 #Session / Details
 ##Foreground operation only 
 ##Disconnects on breakpoints
 
+^tricky to debug sometimes as stopping at a breakpoint kills the session
 
 ---
 #Session / Details
@@ -252,25 +262,38 @@ Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 ##Disconnects on breakpoints
 ##Good candidate for a Singleton*
 
+^ Yes I know - Singletons considered harmful -
+The advice I was given in the labs at DubDub was to keep it in a Singleton
+
 ---
 #[fit]Browser
 ###```MCBrowserViewController *bvc = [[MCBrowserViewController alloc] initWithServiceType:(NSString *)serviceType session:(MCSession *)session];```
+
+^ OK, to browse we have a few options depending on your requirements and bravery.
+MCBrowserViewController is the vanilla option.
 
 ---
 #[fit]Browser
 ###```MCBrowserViewController *bvc = [[MCBrowserViewController alloc] initWithServiceType:(NSString *)serviceType session:(MCSession *)session];```
 ###[fit]use a reverse DNS notation for service type
 
+^ init with a serviceType in reverse DNS form and your session object.
+So what do you get for this?...
+
 ---
 #[fit]Browser
 #[fit]"Easy mode"
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+^ you get a canned view controller you can display to browse for peers on your service.
 
 ---
 #[fit]Browser
 #[fit]"Easy mode"
 ##[fit]handles invites
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
+
+^you can send and receive invites and see the connected and local peers
 
 ---
 #[fit]Browser
@@ -308,10 +331,14 @@ Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 
 ---
 #[fit]Browser
-###```MCBrowserViewControllerDelegate```
+###[fit]```MCBrowserViewControllerDelegate```
 ###browserViewController:shouldPresentNearbyPeer:withDiscoveryInfo:
 ###browserViewControllerDidFinish:
 ###browserViewControllerWasCancelled:
+
+^ theres some callbacks when you get when you become the delegate
+enough to implement a block function maybe and know when the user is done with the session
+to dismiss and either continue into the session or cancel
 
 ---
 #[fit]Browser
@@ -319,11 +346,23 @@ Well the Session, Browser and Advertiser objects map directly Obj-C classes...
 ###Build a custom UI
 ###Use ```MCNearbyServiceBrowser``` for data and callbacks
 
+^ But we're not here for Easy right?
+So we can select hard mode. 
+Not so hard really. Make a custom UI for presenting peers.
+Then use an MCNearbyServiceBrowser for the controller logic. 
+Set the MCNearbyServiceBrowserDelegate and you'll get a more complete set of callbacks
+to handle invitation flow, connection requests etc...
+But wait... that's not hardcore enough for you, right?
+What if you want to have more control of the lower level service implementation?
+
 ---
 #[fit]Browser
 ##"Expert Mode"
 ###Build a custom UI
 ###*Subclass* ```MCNearbyServiceBrowser``` for data and callbacks
+
+^ when you subclass, you can implement the underlying service either with NSNetServiceBrowser or 
+with the C Bonjour API. 
 
 ---
 Advertiser
