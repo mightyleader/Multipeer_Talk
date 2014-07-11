@@ -3,6 +3,11 @@
 #[fit]---------------------------
 #[fit]Rob Stearn
 
+^I'm Rob Stearn
+iOS developer at Kaldor
+Really excited to talk about multipeer networking
+Apple made it so easy to use, but powerful enough to customise
+
 ---
 ![fit, 270% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
 ##[fit]History
@@ -86,9 +91,9 @@ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 *bridges across interfaces*
 
-can send data as *blob, resource or stream*
+can send data as *blob, URL or stream*
 
-^ can send data as *blob, resource or stream* which we'll look at in the Code section
+^ can send data as *blob, URL or stream* which we'll look at in the Code section
 
 ---
 #[fit]Multipeer networking... 
@@ -148,6 +153,12 @@ can ensure *order and delivery of data*
 no direct connection between 1 & 3 required
 
 ^ all the devices connect to each other in a mesh
+
+---
+#[fit]3 Objects:
+##[fit]Session
+##[fit]Browser
+##[fit]Advertiser
 
 ---
 #[fit]Session, Browser and Advertiser
@@ -263,7 +274,8 @@ Foreground only, at least on iOS
 ##Good candidate for a Singleton*
 
 ^ Yes I know - Singletons considered harmful -
-The advice I was given in the labs at DubDub was to keep it in a Singleton
+The advice I was given in the labs at DubDub was to use a Singleton
+for the controller
 
 ---
 #[fit]Browser
@@ -349,9 +361,7 @@ to dismiss and either continue into the session or cancel
 ^ But we're not here for Easy right?
 So we can select hard mode. 
 Not so hard really. Make a custom UI for presenting peers.
-Then use an MCNearbyServiceBrowser for the controller logic. 
-Set the MCNearbyServiceBrowserDelegate and you'll get a more complete set of callbacks
-to handle invitation flow, connection requests etc...
+Then use an MCNearbyServiceBrowser for the controller logic (explain)
 But wait... that's not hardcore enough for you, right?
 What if you want to have more control of the lower level service implementation?
 
@@ -365,54 +375,34 @@ What if you want to have more control of the lower level service implementation?
 with the C Bonjour API. 
 
 ---
+example of NSNetServiceBrowser or C Bonjour code here
+
+---
 Advertiser
+about
 
 ---
-Sending data
-Types of data
+Advertiser
+easy
 
 ---
-Sending data
+Advertiser
+expert
+
+---
+Advertiser
+code example
+
+---
+Transmission Types
+- Data
+- Resource 
+- Stream
+
+---
 Transmission modes
-
----
-#[fit]User 
-#[fit]Interface
-![fit, 500% filtered](http://www.noupe.com/wp-content/uploads/2012/02/wireframingkits61.jpg)
-
----
-#[fit]2 levels of API
-#Standard & Custom
-
----
-#[fit]2 levels of API
-#Standard
-
----
-#[fit]2 levels of API
-#Standard
-###```MCBrowserViewController``` based on ```UITableView```
-
----
-#[fit]2 levels of API
-#Standard
-###```MCBrowserViewController``` based on ```UITableView```
-###```MCAdvertiserAssistant``` based on ```UIAlertView```
-
----
-#[fit]2 levels of API
-##Custom
-
----
-#[fit]2 levels of API
-##Custom
-###```MCNearbyServiceBrowser``` handles finding nearby users and sends callbacks to ```MCNearbyServiceBrowserDelegate```
-
----
-#2 levels of API
-##Custom
-###```MCNearbyServiceBrowser``` finds nearby users and sends callbacks to ```MCNearbyServiceBrowserDelegate```
-###```MCNearbyServiceAdvertiser``` advertises your service and handles invitations by callbacks to ```MCNearbyServiceAdvertiserDelegate``` 
+- Reliable
+- Unreliable
 
 ---
 #[fit]!
@@ -453,19 +443,34 @@ Transmission modes
 ![fit, 150%, filtered](http://thumbs.dreamstime.com/z/tunnel-futuristic-18180424.jpg)
 
 ---
-#[fit]LocalTalk
-###on the app store
-###v0.8
-###v1.0 in progress for iOS 8
-###OS X version to follow
-![right, fit, filtered](https://dl.dropboxusercontent.com/u/5034400/LTSplash.png)
+#Future
+##[fit]Multipeer for OS X in Yosemite
 
 ---
+#Future
+##[fit]Multipeer for OS X in Yosemite
+##[fit]Common API with iOS
 
-#[fit] Rob Stearn
-#[fit] @cocoadelica
-#[fit] www.cocoadelica.co.uk
-#[fit] robstearn@me.com
+---
+#Future
+##[fit]Multipeer for OS X in Yosemite
+##[fit]Common API with iOS
+##[fit]But! Supports background operation
+
+---
+#[fit]Future
+##[fit]Multipeer for OS X in Yosemite
+##[fit]Common API with iOS
+##[fit]But! Supports background operation
+##[fit]AirDrop rebuilt to use the new API
+
+---
+#[fit]Future
+##[fit]Multipeer for OS X in Yosemite
+##[fit]Common API with iOS
+##[fit]But! Supports background operation
+##[fit]AirDrop rebuilt to use the new API
+##[fit]OS X > iOS AirDrop. *Finally*.
 
 ---
 #[fit]End
@@ -474,4 +479,24 @@ Transmission modes
 #### http://www.decksetapp.com
 ### icons made with Sketch
 #### http://bohemiancoding.com/sketch/
+
+---
+#[fit]LocalTalk
+###on the app store
+###v0.8
+###v1.0 in progress for iOS 8
+###OS X version to follow
+![right, fit, filtered](https://dl.dropboxusercontent.com/u/5034400/LTSplash.png)
+
+---
+#[fit]Questions?
+
+---
+#[fit] Rob Stearn
+#[fit] @cocoadelica
+#[fit] www.cocoadelica.co.uk
+#[fit] robstearn@me.com
+
+
+
 
