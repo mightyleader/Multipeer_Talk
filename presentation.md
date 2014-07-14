@@ -7,6 +7,7 @@
 iOS developer at Kaldor
 Really excited to talk about multipeer networking
 Apple made it so easy to use, but powerful enough to customise
+I'd really like to see us make a lot more use of it
 
 ---
 ![fit, 270% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
@@ -65,7 +66,7 @@ requires *no server infrastructure*
 
 sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
-^ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+^ NOTE: does not require Bluetooth LE
 
 ---
 #[fit]Multipeer networking... 
@@ -78,7 +79,7 @@ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 *bridges across interfaces*
 
-^ *bridges across interfaces*
+^ cover it in a moment
 
 ---
 #[fit]Multipeer networking... 
@@ -93,7 +94,7 @@ sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 can send data as *blob, URL or stream*
 
-^ can send data as *blob, URL or stream* which we'll look at in the Code section
+^ we'll look at in the Code section
 
 ---
 #[fit]Multipeer networking... 
@@ -110,7 +111,26 @@ can send data as *blob, URL or stream*
 
 can ensure *order and delivery of data*
 
-^ can ensure *order and delivery of data* more on that later
+^ more on that later
+
+---
+#[fit]Multipeer networking... 
+
+##[fit]sends data *from one device to another*
+
+##[fit]requires *no server infrastructure*
+
+##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+
+##[fit]*bridges across interfaces*
+
+##[fit]can send data as *blob, URL or stream*
+
+##[fit]can ensure *order and delivery of data*
+
+##[fit]API requires iOS7+
+
+^but only for MCxxxx, the underlying tech is doable in at least 6
 
 ---
 #[fit]Consider 3 iOS devices...
