@@ -14,6 +14,7 @@ I'd really like to see us make a lot more use of it
 ##[fit]History
 ##[fit]Overview
 ##[fit]Code
+##[fit]Underneath
 ##[fit]!
 ##[fit]Future
 
@@ -44,72 +45,72 @@ Browser
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
 ^sends data *from one device to another*
 
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
-requires *no server infrastructure*
+##[fit]requires *no server infrastructure*
 
 ^ requires *no server infrastructure*
 
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
-requires *no server infrastructure*
+##[fit]requires *no server infrastructure*
 
-sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 ^ NOTE: does not require Bluetooth LE
 
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
-requires *no server infrastructure*
+##[fit]requires *no server infrastructure*
 
-sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
-*bridges across interfaces*
+##[fit]*bridges across interfaces*
 
 ^ cover it in a moment
 
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
-requires *no server infrastructure*
+##[fit]requires *no server infrastructure*
 
-sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
-*bridges across interfaces*
+##[fit]*bridges across interfaces*
 
-can send data as *blob, URL or stream*
+##[fit]can send data as *blob, URL or stream*
 
 ^ we'll look at in the Code section
 
 ---
 #[fit]Multipeer networking... 
 
-sends data *from one device to another*
+##[fit]sends data *from one device to another*
 
-requires *no server infrastructure*
+##[fit]requires *no server infrastructure*
 
-sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
+##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
-*bridges across interfaces*
+##[fit]*bridges across interfaces*
 
-can send data as *blob, URL or stream*
+##[fit]can send data as *blob, URL or stream*
 
-can ensure *order and delivery of data*
+##[fit]can ensure *order and delivery of data*
 
 ^ more on that later
 
@@ -291,7 +292,7 @@ Foreground only, at least on iOS
 #Session / Details
 ##Foreground operation only 
 ##Disconnects on breakpoints
-##Good candidate for a Singleton*
+##Good candidate for a singleton*
 
 ^ Yes I know - Singletons considered harmful -
 The advice I was given in the labs at DubDub was to use a Singleton
@@ -322,22 +323,12 @@ So what do you get for this?...
 ---
 #[fit]Browser
 #[fit]"Easy mode"
-##[fit]handles invites
-![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
-
-^you can send and receive invites and see the connected and local peers
-
----
-#[fit]Browser
-#[fit]"Easy mode"
-##[fit]handles invites
 ##[fit]boxed solution
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
 
 ---
 #[fit]Browser
 #[fit]"Easy mode"
-##[fit]handles invites
 ##[fit]boxed solution
 ##[fit]minimal styling
 ![220%,right](https://dl.dropboxusercontent.com/u/5034400/MPP/mcbrowservc.png)
@@ -345,7 +336,6 @@ So what do you get for this?...
 ---
 #[fit]Browser
 #[fit]"Easy mode"
-##[fit]handles invites
 ##[fit]boxed solution
 ##[fit]minimal styling
 ##[fit]awesome!
@@ -354,7 +344,6 @@ So what do you get for this?...
 ---
 #[fit]Browser
 #[fit]"Easy mode"
-##[fit]handles invites
 ##[fit]boxed solution
 ##[fit]minimal styling
 ##[fit]awesome!
@@ -395,34 +384,39 @@ What if you want to have more control of the lower level service implementation?
 with the C Bonjour API. 
 
 ---
+#[fit]Browser
 example of NSNetServiceBrowser or C Bonjour code here
 
 ---
-Advertiser
-about
+#[fit]Advertiser
+###```[[MCAdvertiserAssistant alloc] initWithServiceType:service discoveryInfo:discoveryDict session:mySession];```
 
 ---
-Advertiser
-easy
+#[fit]Advertiser
+###```[[MCAdvertiserAssistant alloc] initWithServiceType:service discoveryInfo:discoveryDict session:mySession];```
+
+###```discoveryInfo``` is your opportunity to add additional info and context about your user.
+
+^could be a real name, avatar etc... but keep it as small as possible, the contents are
 
 ---
-Advertiser
+#[fit]Advertiser
 expert
 
 ---
-Advertiser
+#[fit]Advertiser
 code example
 
 ---
-Transmission Types
-- Data
-- Resource 
-- Stream
+#[fit]Transmission Types
+##Data
+##Resource 
+##Stream
 
 ---
-Transmission modes
-- Reliable
-- Unreliable
+#[fit]Transmission modes
+##Reliable
+##Unreliable
 
 ---
 #[fit]!
@@ -432,16 +426,23 @@ Transmission modes
 #Duplicates in the browser
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6028.PNG)
 
+^if you exit and re-enter a session while a peer is browsing then
+you'll find that you can (will) appear twice in their browser.
+
 ---
 #Duplicates in the browser
 ###Issue: ```MCPeerID``` created each time ```MCSession``` is instantiated
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6028.PNG)
+
+^this happens because if a new PeerID is used when creating the session.
 
 ---
 #Duplicates in the browser
 ###Issue: ```MCPeerID``` created each time ```MCSession``` is instantiated
 ###Solution: Each peer should serialize its own ```MCPeerID``` with ```NSKeyedArchiver```, save it to disk and reuse for each new session.
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6028.PNG)
+
+^thankfully MCPeerID is just a wrapper round a Very Big Number and is NSSecureCoding compliant.
 
 ---
 #Invitation response times
@@ -457,6 +458,29 @@ Transmission modes
 ###Issue: Once an invitation is accepted there's a delay before connecting
 ###Solution: Encryption is on by default which adds overhead to initial connections. Consider using ```MCEncryptionNone```
 ![right](https://dl.dropboxusercontent.com/u/5034400/IMG_6029.PNG)
+
+---
+#Comparing MCPeerIDs
+![right](https://dl.dropboxusercontent.com/u/5034400/MPP/apple-a7.png)
+
+^in the WWDC14 video  recommends checking your peerID against incoming peerID
+in the shouldPresentNearbyPeer browser delegate method.
+
+---
+#Comparing MCPeerIDs
+###Issue: MCPeerID ```hash``` method returns it's unique ID number, as an ```NSUInteger```.
+![right](https://dl.dropboxusercontent.com/u/5034400/MPP/apple-a7.png)
+
+^anyone see the problem? 
+A 32-bit client might receive a 64-bit peerID. Unique?
+
+---
+#Comparing MCPeerIDs
+###Issue: MCPeerID ```hash``` method returns it's unique ID number, as an ```NSUInteger```.
+###Solution: Truncate the returned ```hash``` to 32-bit for comparison.
+![right](https://dl.dropboxusercontent.com/u/5034400/MPP/apple-a7.png)
+
+^Engineering believe that the 32-bit portion is unique
 
 ---
 #[fit]Future
