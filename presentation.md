@@ -2,6 +2,7 @@
 #[fit]Networking
 #[fit]---------------------------
 #[fit]Rob Stearn
+![fit, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/pavlo.JPG)
 
 ^I'm Rob Stearn
 iOS developer at Kaldor
@@ -41,10 +42,7 @@ but it just worked
 #[fit]Overview
 ![fit, 175%, filtered](http://www.overviewthemovie.com/wp-content/uploads/2012/12/MegaEarth01.jpg)
 
-^Wireless
-Session
-Advertiser
-Browser
+^So let's get an idea of what multipeer networking means now
 
 ---
 #[fit]Multipeer networking
@@ -72,8 +70,8 @@ Browser
 ##[fit]sends over *Bluetooth, *Ad-Hoc or Infrastructure WiFi*
 
 ^ NOTE: does not require Bluetooth LE
-Ad Hoc or P2P Wifi does not require you all be on a network together.
-Required: Lightning on iOS, 2012 Mac.
+P2P Wifi does not require you all be on a network together.
+P2P Wifi Requires: Lightning on iOS, 2012 Mac.
 
 ---
 #[fit]Multipeer networking
@@ -194,13 +192,55 @@ Discovery is underpinned by Bonjour.
 What is Bonjour?
 
 ---
-Bonjour is Apple’s proposal for zero-configuration networking over IP
-Uses URLs with with the .local domain
-Uses multicast DNS to discover services
-Each peer responds with available services for it's own host name to map to address/port
-Each peer self-assigns an IP in the ```169.254.xxx.xxx``` range and pings the network to check it's not in use. 
+#[fit]Discovery
 
-^I heard an urban myth that this is Microsofts IP subnet but can't confirm of deny it.
+##[fit]Zero-configuration networking over IP
+
+^Apples submission for the standard
+
+---
+#[fit]Discovery
+
+##[fit]Zero-configuration networking over IP
+##[fit]Every peer acts as a DNS for itself
+
+^the mDNS responder daemon 
+
+---
+#[fit]Discovery
+
+##[fit]Zero-configuration networking over IP
+##[fit]Every peer acts as a DNS for itself
+##[fit]Uses URLs with with the .local domain
+
+---
+#[fit]Discovery
+
+##[fit]Zero-configuration networking over IP
+##[fit]Every peer acts as a DNS for itself
+##[fit]Uses URLs with with the .local domain
+##[fit]Uses multicast DNS to discover services
+
+^Each peer responds with it's name, port and service list
+
+---
+#[fit]Discovery
+
+##[fit]Zero-configuration networking over IP
+##[fit]Every peer acts as a DNS for itself
+##[fit]Uses URLs with with the .local domain
+##[fit]Uses multicast DNS to discover services
+##[fit]Peers self-assign an IP in the ```169.254.xxx.xxx``` range
+
+^I heard an urban myth that this is Microsofts IP subnet but can't confirm/deny it.
+
+---
+#Discovery APIs
+![fit, 100%, original](https://dl.dropboxusercontent.com/u/5034400/MPP/APIStack.png)
+
+^sits at the top of a stack of tech.
+We'll mention when you can dip down into NSNetService.
+DNS-SD is a C-Based API you can use to make Bonjour clients for your 'Green Friends'
 
 ---
 #[fit]Code
@@ -223,7 +263,8 @@ Well first let's look at the objects involved...
 
 ^ the multipeer API uses 3 objects, in most cases each device will run all three.
 Firstly both devices will instantiate a session object that stays in memory for the life of the communication.
-
+One device will then create an Advertiser, to broadcast it's service.
+ 
 ---
 #[fit]Session, Browser and Advertiser
 
@@ -231,7 +272,7 @@ Firstly both devices will instantiate a session object that stays in memory for 
 ![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/recieve.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/plain.png)
 
-One device will then create an Advertiser, to broadcast it's service.
+^ This is picked by a Browser object on the other device and displayed as an available peer.
 
 ---
 #[fit]Session, Browser and Advertiser
@@ -240,8 +281,7 @@ One device will then create an Advertiser, to broadcast it's service.
 ![40%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/send.png)
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/receiver.png)
 
-This is picked by a Browser object on the other device and displayed as an available peer.
-Tapping on the displayed name sends an invite back to the Advertiser to join Sessions.
+^Tapping on the displayed name sends an invite back to the Advertiser to join Sessions.
 
 ---
 #[fit]Session, Browser and Advertiser
@@ -251,13 +291,71 @@ Tapping on the displayed name sends an invite back to the Advertiser to join Ses
 ![75%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/plain.png)
 
 ^ When the invitation request is accepted a bi-directional communication session is open to send data.
+The session object on each end stores a list of the connected peers.
+That's not the whole story though, and this is the cool bit.
 
 ---
+#[fit]Session, Browser and Advertiser
+
+![60%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/plain.png)
+![30%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![60%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/plain.png)
+![30%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![60%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/plain.png)
+
+^ If one of those devices is already communicating with a peer
+then they all can see each other in a mesh
+And as I mentioned before, it bridges across network interfaces.
+NOTE: as son as you connect to a peer AUTO CONNECTS their connected peers.
+
+---
+#[fit]Session, Browser and Advertiser
+
+![35%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bluetooth.png)
+![20%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![35%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/both.png)
+![20%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![35%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/wifi.png)
+![20%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![35%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bluetooth.png)
+![20%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/bidirectional.png)
+![35%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/both.png)
+
+^ There is a limit though
+
+---
+#[fit]kMCSessionMaximumNumberOfPeers
+
+^setable property of the session
+the problem is what is that limit?
+
+---
+#[fit]kMCSessionMaximumNumberOfPeers
+
+##[fit]Bluetooth: 8
+
+^if bluetooth is involved then it's 8
+as this is the max point-point connections
+allowed by the CoreBluetooth API
+
+---
+#[fit]kMCSessionMaximumNumberOfPeers
+
+##[fit]Bluetooth: 8
+##[fit]Wi-fi: 8?
+
+^since the property doesn't distinguish interfaces 
+then it's the same for wifi. 
+There's uncertainty what this means for WiFi only mesh networks.
+Young API, still improving.
+Look for this to change. Esp. OS X
+
+---
+
 #[fit]Session
 #[fit]Browser
 #[fit]Advertiser
-#[fit]Transmission types
-#[fit]Transmission modes
+#[fit]Sending data
 
 ^now let's get deeper into these.
 There's really 2 levels of API...
@@ -270,12 +368,14 @@ UI-driven and programmatic.
 ^ You start of creating the Session by making an MCPeerID to represent the local user.
 You pass it a string for the name to display in Browsers.
 MCPeerID is a key part of the process and we'll see it a lot.
+It's used in both levels of API
 
 ---
 #Session / Initialize
 ### ```self.session = [[MCSession alloc] initWithPeer:peerID securityIdentity:nil* encryptionPreference: MCEncryptionRequired**];```
 
 ^ now we can create the session itself, an instance of MCSession
+Likewise also used in both API levels
 
 ---
 #Session / Initialize
@@ -284,7 +384,9 @@ MCPeerID is a key part of the process and we'll see it a lot.
 ####* optional Array with ```SecIdentityRef``` and ```SecCertificateRef``` items 
 
 ^ couple of things to point out, the security identity is an optional NSArray.
+Provides authorisation 
 It would contain a SecIdentityRef struct which contains a certificate/key pair which idents the local user.
+Session gets delegate callback when it receives a certifcate chain
 
 
 ---
@@ -299,9 +401,14 @@ but in short it decides when and how to allow connection depending on the receiv
 
 ---
 #Session / Delegate
-### ```self.session.delegate = self;```
 
-## Delegate callbacks for the session let you handle data transmission events and state changes.
+####[fit] ```didChangeState:```
+####[fit] ```didReceiveCertificate:```
+####[fit] ```didReceiveData:```
+####[fit] ```didStartReceivingResourceWithName:```
+####[fit] ```didFinishReceivingResourceWithName:```
+####[fit] ```didReceiveStream:```
+
 
 ^The delegate gets callbacks about session status, data transfer and connection events. 
 
@@ -339,7 +446,8 @@ MCBrowserViewController is the vanilla option.
 ---
 #[fit]Browser / Initialize
 ###```MCBrowserViewController *bvc = [[MCBrowserViewController alloc] initWithServiceType:(NSString *)serviceType session:(MCSession *)session];```
-###[fit]use a reverse DNS notation for service type
+###[fit]Use a 1-15 character string for service type
+###[fit]Check IANA domain naming conventions
 
 ^ init with a serviceType in reverse DNS form and your session object.
 So what do you get for this?...
@@ -391,8 +499,9 @@ So what do you get for this?...
 ###browserViewControllerWasCancelled:
 
 ^ theres some callbacks when you get when you become the delegate
-enough to implement a block user function maybe and know when the user is done with the session
-to dismiss and either continue into the session or cancel
+enough to implement a block user function, dismiss and either continue into the session or cancel
+discoveryInfo is additional data about the peer, more shortly.
+But we're not here for Easy right?
 
 ---
 #[fit]Browser / Details
@@ -400,27 +509,35 @@ to dismiss and either continue into the session or cancel
 ###Build a custom UI
 ###Use ```MCNearbyServiceBrowser``` for data and callbacks
 
-^ But we're not here for Easy right?
-So we can select hard mode. 
-Not so hard really. Make a custom UI for presenting peers.
+^ So we can select hard mode. 
+Now we're into the more programmtic API
+Not so hard. Make a custom UI for presenting peers.
 Then use an MCNearbyServiceBrowser for the controller logic (explain)
-But wait... that's not hardcore enough for you, right?
-What if you want more control of lower level implementation?
+
+---
+#[fit]Browser / 'Hard Mode'
+###[fit]```MCNearbyServiceBrowserDelegate```
+###didNotStartBrowsingForPeers:
+###foundPeer:withDiscoveryInfo:
+###lostPeer:
+	
+^Up to you to handle what happens when a peer is 
+found/lost, and any errors in starting the discovery process.
+note discoveryInfo again.
 
 ---
 #[fit]Browser / Details
 ##"Expert Mode"
-###Build a custom UI
-###*Subclass* ```MCNearbyServiceBrowser``` for data and callbacks
+###Build a custom UI for browsing
+###*Subclass* ```MCNearbyServiceBrowser``` for data and callbacks, implement with either NSNetServiceBrowser or the C Bonjour API.
 
 ^ when you subclass, you can implement the underlying service either with NSNetServiceBrowser or 
-with the C Bonjour API. 
+with the C Bonjour API.
+re-inventing the wheel to do this for Bonjour browsing.
+allow to browse for non=Bonjour services.
 
 ---
-#[fit]Browser / Details
-example of NSNetServiceBrowser or C Bonjour code here
 
----
 #[fit]Advertiser / Initialize
 ###```[[MCAdvertiserAssistant alloc] initWithServiceType:service discoveryInfo:discoveryDict session:mySession];```
 
@@ -430,47 +547,132 @@ example of NSNetServiceBrowser or C Bonjour code here
 
 ###```discoveryInfo``` is your opportunity to add additional info and context about your user.
 
-^could be a real name, avatar etc... but keep it as small as possible
-Size can affect discovery times.
-I'll explain why later...
+^could be a real name, metadata etc...
 
 ---
-#[fit]Advertiser
-expert
+#[fit]Advertiser / discoveryInfo
+###NSDictionary
+###Keys and Values must be of type NSString
+###Max size per key/value pair of 256 bytes
+
+^Warning: adding data to this can increase the discovery times.
+don't go Base64 encoding images
 
 ---
-#[fit]Advertiser
-code example
+#[fit]Advertiser / Details
+##"Hard Mode"
+###Build a custom UI for invitations
+###Use ```MCNearbyServiceAdvertiser``` advertising & callbacks
 
 ---
-#[fit]Transmission Types
-##Data
-##Resource 
-##Stream
+#[fit]Advertiser / 'Hard Mode'
+###[fit]```MCNearbyServiceAdvertiserDelegate```
+###```advertiser: didNotStartAdvertisingPeer: ```
+###```advertiser: didReceiveInvitationFromPeer: withContext: invitationHandler:```
 
 ---
-#[fit]Transmission modes
-##Reliable
-##Unreliable
+#[fit]Sending data
+![fit, 130%, filtered](https://www.mandiant.com/blog/wp-content/ammo/Binary-Data_Pic-3.png)
+##Messages
+##Resources
+##Streams
+
+^Apple provide 3 APIs for sending data to peers
+
+---
+#[fit]Messages
+###Data with known bounds, serialized into ```NSData``` objects, sent atomically
+###```sendData: toPeers: withMode: error:```
+###```session: didReceiveData: fromPeer:```
+
+^examples include Text messages, Bezier paths anything small and serializable
+note the mode option...
+
+---
+###[fit]Messages can be sent as either:
+###```MCSessionSendDataReliable``` which guarantees delivery and order
+
+^handles retransmission if missed, dropped or corrupted and ensures delivery order
+adds overhead to communication use if data integrity is important like text messaging
+
+---
+###[fit]Messages can be sent as either:
+###```MCSessionSendDataReliable``` which guarantees delivery and order
+###```MCSessionSendDataUnreliable``` which does not
+
+^Unreliable mode where performance is more important.
+
+---
+###[fit]Messages can be sent as either:
+###```MCSessionSendDataReliable``` which guarantees delivery and order
+###```MCSessionSendDataUnreliable``` which does not
+###Analagous to TCP/UDP
+
+^If this sounds familiar then thats because it indicates the underlying implementation
+
+---
+#[fit]Resources
+###Text files, File URLs or Web URLs
+###```sendResourceAtURL: withName: toPeer: withCompletionHandler:```
+### Callbacks to start and finish transfer, uses ```NSProgress```
+
+^send files and the content of URL resources this way
+use the completion handler to handle failures
+the start method passes an NSProgress object that you
+can use to indicate UI transfer progress.
+
+---
+#[fit]Streams
+###Unbounded data, uses NSStreams
+###```startStreamWithName: toPeer: error:``` returns an ```NSOutputStream```
+###```session: didReceiveStream: withName: fromPeer:``` gives an ```NSInputStream```
+
+^use for audio, video streaming
+Be aware that streams need handling in your code.
+
+---
+#[fit]Streams
+###For both input and output streams:
+###> Add stream to a run loop
+###> Open the stream
+###> Set a delegate and respond to ```stream: handleEvent:``` callback
+
+
+^For you to handle the Streams.
+You must: Add to run loop, open the stream, respond to delegate methods
 
 ---
 #[fit]Underneath
+##SRV Records
+##TXT Records
 ![fit, 185%, filtered](http://www.insider-london.co.uk/wp-content/uploads/2012/04/London-underground-walking_tours.jpg)
+
+^when you start up an advertiser you're really adding a record to you
+local mDNS instance that looks like this.
 
 ---
 #[fit]Underneath
 #[fit]```my_service._http._tcp.local. 120 IN SRV 0 0 515 mynameisprince.local```
+
+^how does this map to the information we use in the multipeer framework?
 
 ---
 #[fit]Underneath
 #[fit]```my_service._http._tcp.local. 120 IN SRV 0 0 515 mynameisprince.local```
 ###[fit]```my_service``` is the Service Name.
+
+^this is name you defined as the Service Type in the MCSession
+it's not what Bonjour considers the Service Type...
 
 ---
 #[fit]Underneath
 #[fit]```my_service._http._tcp.local. 120 IN SRV 0 0 515 mynameisprince.local```
 ###[fit]```my_service``` is the Service Name.
 ###[fit]```_http.``` is the actual Service Type.
+
+^...but this is. It's defined for you by the advertiser.
+Forms the scheme of the Bonjour URL.
+TBH I don't know the exact one that the advertiser uses.
 
 ---
 #[fit]Underneath
@@ -478,6 +680,11 @@ code example
 ###[fit]```my_service``` is the Service Name.
 ###[fit]```_http.``` is the actual Service Type.
 ###[fit]```515``` is the connection port number.
+
+^the port number that the service is available over. 
+Assigned dynamically by the framework.
+Because every peer is it's own mDNS instance, these don't have to match
+between peers.
 
 ---
 #[fit]Underneath
@@ -486,6 +693,28 @@ code example
 ###[fit]```_http.``` is the actual Service Type.
 ###[fit]```515``` is the connection port number.
 ###[fit]```nynameisprince``` is the displayname from ```MCPeerID```
+
+^this is the displayName property you assigned 
+to the users MCPeerID object. It forms the host of the Bonjour URL.
+Requests to the users device for services will cause mDNS daemon 
+to respond with this service record
+
+---
+#[fit]Underneath
+#[fit]```my_printer._printer._tcp.local. TXT papersize=A4, jamWhenUrgent=YES```
+
+^remember the discoveryInfo?
+it becomes a Bonjour TXT record for the service
+
+---
+#[fit]Underneath
+#[fit]```my_printer._printer._tcp.local. TXT papersize=A4, jamWhenUrgent=YES```
+
+###[fit]key value pairs
+###[fit]256 byte limit
+###[fit]More data, more time to transmit
+
+^the limitations on it are what restricts size of discoveryInfo
 
 ---
 #[fit]!
@@ -552,25 +781,37 @@ A 32-bit client might receive a 64-bit peerID. Unique?
 ^Engineering believe that the 32-bit portion is unique
 
 ---
+#[fit]Demo
+![fit, 220%, filtered](http://www.history.com/news/wp-content/uploads/2012/05/hindenburg-wide.jpg)
+
+---
+#[fit]LocalTalk
+##[fit]on the app store
+##[fit]update in progress for iOS 8
+##[fit]OS X version to follow
+##[fit]free!
+![right, fit](https://dl.dropboxusercontent.com/u/5034400/MPP/splash low.png)
+
+---
 #[fit]Future
 ![fit, 150%, filtered](http://thumbs.dreamstime.com/z/tunnel-futuristic-18180424.jpg)
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 ##[fit]Common API with iOS
 
 ^uses NSViewController instead of UI
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 ##[fit]Common API with iOS
 ##[fit]But! Supports background operation
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 ##[fit]Common API with iOS
 ##[fit]But! Supports background operation
 ##[fit]However! Not Bluetooth
@@ -581,14 +822,14 @@ it does add Ethernet as an interface.
 Which should mean it comes to AirDrop too.
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 ##[fit]Common API with iOS
 ##[fit]But! Supports background operation
 ##[fit]However! Not Bluetooth
 ##[fit]AirDrop rebuilt to use the new API
 
 ---
-##[fit]Multipeer for OS X in Yosemite
+##[fit]Multipeer for Mac
 ##[fit]Common API with iOS
 ##[fit]But! Supports background operation
 ##[fit]However! Not Bluetooth
@@ -604,15 +845,8 @@ Which should mean it comes to AirDrop too.
 ### http://bohemiancoding.com/sketch/
 
 ---
-#[fit]LocalTalk
-##[fit]on the app store
-##[fit]update in progress for iOS 8
-##[fit]OS X version to follow
-##[fit]free!
-![right, fit, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/LTSplash.png)
-
----
 #[fit]Questions?
+![fit, 300%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/Show-of-hands.jpg)
 
 ---
 #[fit] Rob Stearn
@@ -621,15 +855,14 @@ Which should mean it comes to AirDrop too.
 #[fit] robstearn@me.com
 
 ---
-Resources
-WWDC2013 video
-WWDC2014 video
-IANA service type list
-Bonjour Overview PG
-Multipeer Networking Framework Reference
-NSNetServices and CFNetServices Programming Guide 
-MultipperGroupChat sample code
-Forums
+[WWDC 2013 Session 708](http://devstreaming.apple.com/videos/wwdc/2013/708xbx3x7xusbzidl0j3acxest/708/708-HD.mov?dl=1)
+[WWDC 2014 Session 709](http://devstreaming.apple.com/videos/wwdc/2014/709xx1q8hdvo14x/709/709_hd_cross_platform_nearby_networking.mov?dl=1)
+[IANA service type list](http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml)
+[Bonjour Overview](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/NetServices/Introduction.html)
+[Multipeer Networking Reference](https://developer.apple.com/library/ios/documentation/MultipeerConnectivity/Reference/MultipeerConnectivityFramework/Introduction/Introduction.html)
+[NSNetServices & CFNetServices Programming Guide](https://developer.apple.com/library/mac/documentation/networking/conceptual/nsnetserviceprogguide/Introduction.html)
+[MultipeerGroupChat sample code](https://developer.apple.com/library/ios/samplecode/MultipeerGroupChat/Introduction/Intro.html)
+[Forums](https://devforums.apple.com/community/ios/core/coreosgen)
 
 
 
