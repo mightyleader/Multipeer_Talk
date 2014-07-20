@@ -54,7 +54,7 @@ but it just worked
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -63,7 +63,7 @@ but it just worked
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -76,7 +76,7 @@ P2P Wifi Requires: Lightning on iOS, 2012 Mac.
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -132,7 +132,7 @@ no direct connection between 1 & 3 required
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -140,14 +140,14 @@ no direct connection between 1 & 3 required
 
 ##[fit]*bridges across interfaces*
 
-##[fit]can send data as *blob, URL or stream*
+##[fit]can send data as *Message, File or Stream*
 
 ^ we'll look at in the Code section
 
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -155,7 +155,7 @@ no direct connection between 1 & 3 required
 
 ##[fit]*bridges across interfaces*
 
-##[fit]can send data as *blob, URL or stream*
+##[fit]can send data as *Message, File or Stream*
 
 ##[fit]can ensure *order and delivery of data*
 
@@ -164,7 +164,7 @@ no direct connection between 1 & 3 required
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ##[fit]requires *no server infrastructure*
 
@@ -172,14 +172,14 @@ no direct connection between 1 & 3 required
 
 ##[fit]*bridges across interfaces*
 
-##[fit]can send data as *blob, URL or stream*
+##[fit]can send data as *Message, File or Stream*
 
 ##[fit]can ensure *order and delivery of data*
 
 ##[fit]API requires iOS7+
 
-^but only for MCxxxx, the underlying tech is doable in at least 6
-but networking is hardly new, right?
+^but only for MCxxxx, the underlying tech is in at least 5
+And networking is hardly new, right?
 what are we really gaining here?
 
 ---
@@ -510,7 +510,7 @@ But we're not here for Easy right?
 ###Use ```MCNearbyServiceBrowser``` for data and callbacks
 
 ^ So we can select hard mode. 
-Now we're into the more programmtic API
+Now we're into the more programatic API
 Not so hard. Make a custom UI for presenting peers.
 Then use an MCNearbyServiceBrowser for the controller logic (explain)
 
