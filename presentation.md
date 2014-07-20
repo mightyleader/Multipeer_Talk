@@ -178,16 +178,17 @@ no direct connection between 1 & 3 required
 
 ##[fit]API requires iOS7+
 
-^but only for MCxxxx, the underlying tech is in at least 5
+^but only for this API, the underlying tech is in at least 5
 And networking is hardly new, right?
-what are we really gaining here?
+So what are we really gaining here?
+It's about Discovery...
 
 ---
 #[fit]Discovery
 ![fit, filtered](https://cdn2.iconfinder.com/data/icons/picons-essentials/71/map-512.png)
 
 ^the real win is in simplifying the process of discovery.
-Finding and initiating a connection with optional encryption and authentication.
+Finding peers and initiating a connection to them
 Discovery is underpinned by Bonjour.
 What is Bonjour?
 
