@@ -15,7 +15,7 @@ I'd really like to see us make a lot more use of it
 ##[fit]History
 ##[fit]Overview
 ##[fit]Code
-##[fit]Underneath
+<!-- ##[fit]Underneath -->
 ##[fit]!
 ##[fit]Future
 
@@ -47,7 +47,7 @@ but it just worked
 ---
 #[fit]Multipeer networking
 
-##[fit]sends data *from one device to another*
+##[fit]sends data *from one device to many*
 
 ^sends data *from one device to another*
 
@@ -526,7 +526,7 @@ Then use an MCNearbyServiceBrowser for the controller logic (explain)
 found/lost, and any errors in starting the discovery process.
 note discoveryInfo again.
 
----
+<!-- ---
 #[fit]Browser / Details
 ##"Expert Mode"
 ###Build a custom UI for browsing
@@ -536,7 +536,7 @@ note discoveryInfo again.
 with the C Bonjour API.
 re-inventing the wheel to do this for Bonjour browsing.
 allow to browse for non=Bonjour services.
-
+ -->
 ---
 
 #[fit]Advertiser / Initialize
@@ -643,7 +643,7 @@ Be aware that streams need handling in your code.
 You must: Add to run loop, open the stream, respond to delegate methods
 
 ---
-#[fit]Underneath
+<!-- #[fit]Underneath
 ##SRV Records
 ##TXT Records
 ![fit, 185%, filtered](http://www.insider-london.co.uk/wp-content/uploads/2012/04/London-underground-walking_tours.jpg)
@@ -717,7 +717,7 @@ it becomes a Bonjour TXT record for the service
 
 ^the limitations on it are what restricts size of discoveryInfo
 
----
+--- -->
 #[fit]!
 ![fit, 150% filtered](http://i.stack.imgur.com/nI9zx.jpg)
  
