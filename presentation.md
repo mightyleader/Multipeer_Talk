@@ -8,7 +8,7 @@
 iOS developer at Kaldor
 Really excited to talk about multipeer networking
 Apple made it so easy to use, but powerful enough to customise
-I'd really like to see us make a lot more use of it
+Spin a bit about Why
 
 ---
 ![fit, 270% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
@@ -607,7 +607,7 @@ adds overhead to communication use if data integrity is important like text mess
 ###[fit]Messages can be sent as either:
 ###```MCSessionSendDataReliable``` which guarantees delivery and order
 ###```MCSessionSendDataUnreliable``` which does not
-###Analagous to TCP/UDP
+###Analogy to TCP/UDP
 
 ^If this sounds familiar then thats because it indicates the underlying implementation
 
@@ -835,7 +835,7 @@ Which should mean it comes to AirDrop too.
 ##[fit]But! Supports background operation
 ##[fit]However! Not Bluetooth
 ##[fit]AirDrop rebuilt to use the new API
-##[fit]OS X > iOS AirDrop. *Finally*.
+##[fit]OS X <-> iOS AirDrop. *Finally*.
 
 ---
 #[fit]End
