@@ -1,17 +1,17 @@
 #[fit]Multipeer 
 #[fit]Networking
-#[fit]---------------------------
+#[fit]-----------------
 #[fit]Rob Stearn
-![fit, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/pavlo.JPG)
+![fit, 40%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/pavlo.JPG)
 
 ^I'm Rob Stearn
-iOS developer at Kaldor
+iOS developer at Kaldor,
 Really excited to talk about multipeer networking
-Apple made it so easy to use, but powerful enough to customise
-Spin a bit about Why
+Beacons, WWDC, WHY
+
 
 ---
-![fit, 270% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
+![fit, 290% filtered](http://cdn.macrumors.com/article/2011/03/23/095149-federighi_lion.jpg)
 ##[fit]History
 ##[fit]Overview
 ##[fit]Code
@@ -19,18 +19,18 @@ Spin a bit about Why
 ##[fit]!
 ##[fit]Future
 
-^ so we're going to go through a little history, then run through an overview of the technology, get into some code and explore the different levels of API you can use. I'll outline a couple of gotchas and we'll finish with a look ahead.
+^we're going to go through a little history, then run through an overview of the technology, get into some code and explore the different levels of API you can use. I'll outline a couple of gotchas and we'll finish with a look ahead.
 
 ---
 #[fit]History
-![fit, 170%, filtered](http://lowendmac.com/wp-content/uploads/mac-plus-and-laserwriter.jpg)
+![fit, 200%, filtered](http://lowendmac.com/wp-content/uploads/mac-plus-and-laserwriter.jpg)
 
 ^ there's a history of peer-to-peer networking in Mac OS. 
 Anybody here used a Mac since System 7? 
 For those who haven't, you never experienced... the Chooser!
 
 ---
-![fit](http://computers.mcbx.netne.net/apple/general/chooser.jpg)
+![fit, 1100%](http://computers.mcbx.netne.net/apple/general/chooser.jpg)
 
 ^ click an item, see the local resources, pick a server or printer 
 no IP addresses just names
@@ -40,7 +40,7 @@ but it just worked
 
 ---
 #[fit]Overview
-![fit, 175%, filtered](http://www.overviewthemovie.com/wp-content/uploads/2012/12/MegaEarth01.jpg)
+![fit, 210%, filtered](http://www.overviewthemovie.com/wp-content/uploads/2012/12/MegaEarth01.jpg)
 
 ^So let's get an idea of what multipeer networking means now
 
@@ -573,7 +573,7 @@ don't go Base64 encoding images
 
 ---
 #[fit]Sending data
-![fit, 130%, filtered](https://www.mandiant.com/blog/wp-content/ammo/Binary-Data_Pic-3.png)
+![fit, 170%, filtered](https://www.mandiant.com/blog/wp-content/ammo/Binary-Data_Pic-3.png)
 ##Messages
 ##Resources
 ##Streams
@@ -839,7 +839,7 @@ Which should mean it comes to AirDrop too.
 
 ---
 #[fit]End
-![fit, 60%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/cocoa.png)
+![fit, 80%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/cocoa.png)
 ### created with Deckset
 ### http://www.decksetapp.com
 ### icons made with Sketch
@@ -847,7 +847,7 @@ Which should mean it comes to AirDrop too.
 
 ---
 #[fit]Questions?
-![fit, 300%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/Show-of-hands.jpg)
+![fit, 350%, filtered](https://dl.dropboxusercontent.com/u/5034400/MPP/Show-of-hands.jpg)
 
 ---
 #[fit] Rob Stearn
